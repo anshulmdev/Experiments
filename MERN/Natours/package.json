@@ -4,13 +4,16 @@
   "description": "Sample Express/MongoDB Tutorial",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "anshul",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
-    "morgan": "^1.10.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.15"
   }
 }
