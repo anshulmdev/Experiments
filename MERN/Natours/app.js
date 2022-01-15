@@ -59,8 +59,37 @@ const deleteTour = (req, res) => {
   res.status(200).json({"status":"Tour Deleted"})
 }
 
-app.route('/api/v1/tours').get(getAllTours).post(createTour);
-app.route('/api/v1/tours/:id').get(getTour).patch(updateTour).delete(deleteTour);
+const getAllUsers = (req, res) => {
+  res.status(500).json({"status":"Get All Users Endpoint: Not Completed"})
+}
+
+const createUser = (req, res) => {
+  res.status(500).json({"status":"Create Endpoint: Not Completed"})
+}
+
+const getUser = (req, res) => {
+  res.status(500).json({"status":"Get Endpoint: Not Completed"})
+}
+
+const updateUser = (req, res) => {
+  res.status(500).json({"status":"Update Endpoint: Not Completed"})
+}
+
+const deleteUser = (req, res) => {
+  res.status(500).json({"status":"Delete Endpoint: Not Completed"})
+}
+
+const tourRouter = express.Router()
+const userRouter = express.Router()
+
+app.use('/api/v1/tours', tourRouter)
+app.use('/api/v1/users', userRouter)
+
+tourRouter.route('/').get(getAllTours).post(createUser);
+tourRouter.route('/api/v1/tours/:id').get(getTour).patch(updateTour).delete(deleteTour);
+
+userRouter.route('/').get(getAllUsers).post(createTour);
+userRouter.route('/api/v1/users/:id').get(getUser).patch(updateUser).delete(deleteUser);
 
 const port = 3000;
 app.listen(port, () => {
