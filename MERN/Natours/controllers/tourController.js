@@ -10,6 +10,15 @@ exports.checkId =(req, res, next, val) => {
   next();
 }
 
+exports.checkBody = (req, res, next) => {
+  console.log('Triggered')
+  const {name, price} = req.body;
+  if (!name || !price) {
+    return res.status(400).json({"status":"failed", "message":"Parameters missing from body"})
+  }
+  next();
+}
+
 exports.getAllTours = (req, res) => {
     res.status(200).json({
       "status":"success",
@@ -24,7 +33,7 @@ exports.createTour = (req, res) => {
     const newTour = Object.assign({id: newid}, req.body)
     tours.push(newTour);
     fs.writeFile(`${__dirname}/dev-data/data/tours-simple.json`, JSON.stringify(tours), err => {
-      res.send(201).json(
+      res.status(201).json(
         {"status":"success", data:{tour:newTour}})
     })
   }
