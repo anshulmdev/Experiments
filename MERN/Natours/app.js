@@ -3,7 +3,6 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 dotenv.config({'path':'./config.env'})
 
-
 const app = express();
 app.use(express.json());
 app.use(morgan('dev'))
