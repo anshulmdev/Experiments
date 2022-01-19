@@ -5,7 +5,7 @@ const dotenv = require('dotenv');
 dotenv.config({'path':'./config.env'})
 const DB = process.env.DATABASE;
 
-mongoose.connect(DB).then(connection => { console.log(connection.connections)});
+mongoose.connect(DB);
 
 const tourSchema = mongoose.Schema({
   name: {
@@ -23,7 +23,18 @@ const tourSchema = mongoose.Schema({
   }
 })
 
-const Tour = moongoose.model('Tour', tourSchema);
+const Tour = mongoose.model('Tour', tourSchema);
+const testTour = new Tour({
+  name: 'Sample 2',
+  price: 22,
+  rating: 2.0
+})
+
+testTour.save().then(e => {
+  console.log(e)
+}).catch(e => {
+  console.log('error',e)
+})
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
