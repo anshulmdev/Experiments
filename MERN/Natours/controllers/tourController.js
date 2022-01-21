@@ -20,13 +20,13 @@ exports.checkBody = (req, res, next) => {
   next();
 }
 
-exports.getAllTours = (req, res) => {
-    res.status(200).json({
-      "status":"success",
-      "requestTime": req.requestTime,
-      "results": tours.length,
-      "data": {tours}
-    })
+exports.getAllTours = async (req, res) => {
+    try{
+      const tours = await Tour.find()
+      await res.status(201).json({"status": "success","results": tours.length, data: tours})
+    }catch(err){
+      res.status(404).json({"status":"Failed", "messgae": err.message})
+    }
   }
   
 exports.createTour = async (req, res) => {
@@ -38,13 +38,14 @@ exports.createTour = async (req, res) => {
   }
   }
   
-exports.getTour = (req, res) => {
-    const tour = tours.find((e) => e.id === req.params.id * 1)
-    res.status(200).json({
-      "status":"success",
-      "data": tour
-    })
+exports.getTour = async (req, res) => {
+  try{
+    const tours = await Tour.findById(req.params.id)
+    await res.status(201).json({"status": "success", data: tours})
+  }catch(err){
+    res.status(404).json({"status":"Failed", "messgae": err.message})
   }
+}
   
 exports.updateTour = (req, res) => {
     res.status(200).json({"status":"Tour Patched"})
