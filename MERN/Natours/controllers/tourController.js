@@ -22,7 +22,13 @@ exports.checkBody = (req, res, next) => {
 
 exports.getAllTours = async (req, res) => {
     try{
-      const tours = await Tour.find()
+      const queryObj = { ...req.query }
+      const excludedFields = ['page', 'limit', 'sort', 'fields']
+      excludedFields.forEach((e) => delete queryObj[e]);
+
+      const query = Tour.find(queryObj)
+      const tours = await query
+
       await res.status(201).json({"status": "success","results": tours.length, data: tours})
     }catch(err){
       res.status(404).json({"status":"Failed", "messgae": err.message})
