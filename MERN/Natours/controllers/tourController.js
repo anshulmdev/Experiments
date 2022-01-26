@@ -1,4 +1,5 @@
 const fs = require('fs');
+const APIFeatures = require('../utils/apiFeatures');
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`));
 const Tour = require('../Models/tourModel');
 
@@ -20,16 +21,18 @@ exports.checkBody = (req, res, next) => {
   next();
 }
 
+
 exports.getAllTours = async (req, res) => {
     try{
-      const queryObj = { ...req.query }
-      const excludedFields = ['page', 'limit', 'sort', 'fields']
-      excludedFields.forEach((e) => delete queryObj[e]);
+      const features = new APIFeatures(Tour.find(), req.query)
+      .filter()
+      .sort()
+      .limitFields()
+      .paginate()
 
-      const query = Tour.find(queryObj)
-      const tours = await query
-
+      const tours = await features.query
       await res.status(201).json({"status": "success","results": tours.length, data: tours})
+
     }catch(err){
       res.status(404).json({"status":"Failed", "messgae": err.message})
     }
