@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const slugify = require('slugify');
 
 dotenv.config({'path':'./config.env'})
 const DB = process.env.DATABASE;
@@ -46,6 +47,7 @@ const tourSchema = new mongoose.Schema(
       type: Number,
       default: 0
     },
+    slug: String,
     price: {
       type: Number,
       required: [true, 'A tour must have a price']
@@ -124,7 +126,12 @@ const tourSchema = new mongoose.Schema(
 tourSchema.virtual('durationWeeks').get( function () {
   return this.duration / 7;
 })
-  
+
+tourSchema.pre('save', function(next) {
+  this.slug = slugify(this.name, {lower: true});
+  next();
+})
+
 const Tour = mongoose.model('Tour', tourSchema);
 
 module.exports = Tour;

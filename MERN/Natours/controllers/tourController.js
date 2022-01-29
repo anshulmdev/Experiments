@@ -46,18 +46,6 @@ exports.createTour = async (req, res) => {
     res.status(404).json({"status":"Failed", "messgae": err.message})
   }
   }
-
-  exports.bulk = async (req, res) => {
-    try{
-      const tours = req.body
-      tours.forEach( async(e) => {
-        await Tour.create(e)
-      })
-      await res.status(201).json({"status": "success", data: tours})
-    } catch(err){
-      res.status(404).json({"status":"Failed", "messgae": err.message})
-    }
-    }
   
 exports.getTour = async (req, res) => {
   try{
