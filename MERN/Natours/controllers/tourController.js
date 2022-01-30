@@ -4,7 +4,7 @@ const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-si
 const Tour = require('../Models/tourModel');
 
 
-exports.checkId =(req, res, next, val) => {
+exports.checkId = (req, res, next, val) => {
   console.log('Value', val)
   if(req.params.id * 1 > tours.length) {
     return res.status(404).json({"status":"failed", "message": "Invalid ID"})
