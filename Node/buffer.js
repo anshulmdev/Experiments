@@ -14,16 +14,12 @@ const buf4 = Buffer.from('Github Experiments', 'utf8');
 
 // Example 2:
 
-// Encoding
-
 const bufEncode1 = Buffer.from('Sample Statement', 'utf-8')
-const bufEncode2 = bufEncode1.toString('base64')
+const bufDecode1 = bufEncode1.toString('base64')
 
-// Decoding
-const bufDecode1 = Buffer.from(bufEncode2, 'base64')
-const bufDecode2 = bufDecode1.toString('utf-8')
-
+const bufEncode2 = Buffer.from(bufDecode1, 'base64')
+const bufDecode2 = bufEncode2.toString('utf-8')
 
 // Activate:
-// console.table({bufEncode1, bufDecode1});
-// console.table({bufEncode2, bufDecode2});
+// console.table({bufEncode1, bufEncode2});
+// console.table({bufDecode1, bufDecode2});
