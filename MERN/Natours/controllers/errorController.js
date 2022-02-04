@@ -17,13 +17,20 @@ const handleCastErrorDB = err => {
     return new AppError(message, 400);
   };
   
-  const handleDuplicateFieldsDB = err => {
-    const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
-    console.log(value);
-  
-    const message = `Duplicate field value: ${value}. Please use another value!`;
+const handleDuplicateFieldsDB = err => {
+const value = err.errmsg.match(/(["'])(\\?.)*?\1/)[0];
+console.log(value);
+
+const message = `Duplicate field value: ${value}. Please use another value!`;
+return new AppError(message, 400);
+};
+
+const handleValidationErrorDB = err => {
+    console.log('triggered22')
+    const errors = Object.values(err.errors).map(el => el.message);
+    const message = `Invalid input data: ${errors.join('. ')}`;
     return new AppError(message, 400);
-  };
+}
 
 module.exports = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
@@ -31,6 +38,7 @@ module.exports = (err, req, res, next) => {
     if (process.env.NODE_ENV === 'development') sendErrorDev(err, res);
     else if (process.env.NODE_ENV === 'production') {
         if (err.name === 'CastError') err = handleCastErrorDB(err);
+        if (err.name === 'ValidationError') err = handleValidationErrorDB(err);
         if (err.code === 11000) err = handleDuplicateFieldsDB(err);
         sendErrorProd(err, res);
     }
