@@ -1,12 +1,5 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const slugify = require('slugify');
-
-dotenv.config({'path':'./config.env'})
-const DB = process.env.DATABASE;
-
-mongoose.connect(DB);
-
 
 const tourSchema = new mongoose.Schema(
   {
