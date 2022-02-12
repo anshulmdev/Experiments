@@ -1,5 +1,17 @@
 {
+  "name": "node",
+  "version": "1.0.0",
+  "main": "assert.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
   "dependencies": {
     "assert": "^2.0.0"
+  },
+  "devDependencies": {
+    "jest": "^27.5.1"
   }
 }
