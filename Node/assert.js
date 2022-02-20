@@ -1,6 +1,10 @@
 // const assert = require('assert');
 const assert = require('assert/strict');
 
+
+// const assert = require('assert');
+const assert = require('assert/strict');
+
 // Example 1:
 const a = 9;
 const b = 10;
