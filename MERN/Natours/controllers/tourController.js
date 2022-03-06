@@ -1,7 +1,7 @@
 const fs = require('fs');
 const APIFeatures = require('../utils/apiFeatures');
 const tours = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/data/tours-simple.json`));
-const Tour = require('../Models/tourModel');
+const Tour = require('../models/tourModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
 
