@@ -1,0 +1,36 @@
+class Payment {
+  pay(process) {
+    return process.pay()
+  }
+  refund(process){
+    return process.refund()
+  }
+}
+
+
+class Bank {
+  constructor (amount, account) {
+    this.amount = amount;
+    this.account = account;
+  }
+  pay (){
+    return this.processPayment();
+  }
+  refund() {
+    return this.processRefund();
+  }
+}
+
+class Chase extends Bank {
+  processPayment (){
+    return `Payment of ${this.amount} paid for account: ${this.account}`
+  }
+  processRefund (){
+    return `Payment of ${this.amount} refunded for account: ${this.account}`
+  }
+}
+
+
+const payment = new Payment();
+console.log(payment.pay(new Chase(200, "168401000299")))
+console.log(payment.refund(new Chase(100, "168401000299")))
