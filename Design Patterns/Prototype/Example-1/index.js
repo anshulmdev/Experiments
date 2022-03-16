@@ -1,37 +1,12 @@
-const lib = require("lib")({ token: process.env.STDLIB_SECRET_TOKEN });
-const axios = require("axios");
+var scout_prototype = require('./scout_prototype');
 
-class PollingScript {
-  constructor(clientName) {
-    this.clientName = clientName;
-  }
-  static getObjects = async function() {
-    const url = await this.getURL();
-    const body = await this.getFilterObject();
-    const getCards = await axios.post(url, body);
-    return getCards.data.results;
-  }
-  async updateFirebase(date) {
-    const params = { params: { auth: `${process.env.FIREBASE}` } };
-    const headers = { headers: { "Content-Type": "application/json" } };
-    const url = `${process.env.FIREBASE_URL}/${this.clientName}.json`;
-    const body = this.getFirebaseBody(date);
-    await axios.patch(url, body, params, headers);
-    return "Firebase Updated";
-  }
+var alex = scout_prototype.clone();
+alex.name = 'Alex Banks';
+alex.addItemToList('slingshot');
 
-  async triggerWorkflow() {
-    const entities = await this.getObjects();
-    if (entities.length > 0) {
-      const newTimeStamp = Date.parse(entities[0].properties.createdate);
-      await this.updateFirebase(newTimeStamp);
-      await this.reportDiscord(entities.length);
-      for (let i = 0; i < entities.length; i++) {
-        await this.runWorkflow(entities[i]);
-      }
-      return "New Entries Found";
-    } else return "No New Entries";
-  }
-}
+var eve = scout_prototype.clone();
+eve.name = 'Eve Porcello';
+eve.addItemToList('reading light');
 
-module.exports = PollingScript;
+console.log( `${alex.name}: ${alex.shoppingList}` );
+console.log( `${eve.name}: ${eve.shoppingList}` );
