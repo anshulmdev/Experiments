@@ -9,4 +9,5 @@ var userFactory = (name, money=0, type, employer) => {
     }
 }
 
+
 module.exports = userFactory;
