@@ -25,4 +25,9 @@ exports.signup = catchAsync(async (req, res, next) => {
 exports.login = (req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) return next(new AppError(`Please provide email and password`, 400));
+    const token = ''
+    res.status(200).json({
+        status: 'success',
+        token
+    })
 }
