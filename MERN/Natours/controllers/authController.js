@@ -22,12 +22,16 @@ exports.signup = catchAsync(async (req, res, next) => {
 });
 
 
-exports.login = (req, res, next) => {
+exports.login = catchAsync( async (req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) return next(new AppError(`Please provide email and password`, 400));
-    const token = ''
+    const user = User.findOne({ email }).select('+password');
+    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRES_IN
+    });
+    if (email !== token) return next(new AppError(`User not authenticated`, 400));
     res.status(200).json({
         status: 'success',
         token
     })
-}
+})

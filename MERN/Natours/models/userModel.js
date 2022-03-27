@@ -20,11 +20,13 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: [true, 'Password is mandatory'],
-        minlength: 8
+        minlength: 8,
+        select: false
     },
     passwordConfirm: {
         type: String,
         required: [true, 'Please confirm your password'],
+        select: false,
         validate: {
             validator: function(value) {
                 return value === this.password;
