@@ -41,3 +41,9 @@ exports.login = catchAsync( async (req, res, next) => {
         token
     })
 })
+
+exports.protect = (req, res, next) => {
+    const { token } = req.headers;
+    console.log(token);
+    next();
+}
