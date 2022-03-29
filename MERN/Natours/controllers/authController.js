@@ -1,4 +1,5 @@
 const jwt = require('jsonwebtoken');
+const { promisify } = require('util')
 const User = require('../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/appError');
@@ -45,9 +46,12 @@ exports.login = catchAsync( async (req, res, next) => {
 exports.protect = catchAsync( async(req, res, next) => {
     const { authorization } = req.headers;
     let token;
+    let user;
     // Getting Token
     if (authorization && authorization.startsWith('Bearer')) token = authorization.split(' ')[1];
     else return next(new AppError(`User not logged In`, 401));
+    // Verifying Token
+    console.timeLog(user)
     
     next();
 })
