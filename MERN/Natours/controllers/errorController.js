@@ -32,6 +32,8 @@ const handleValidationErrorDB = err => {
     return new AppError(message, 400);
 }
 
+const handleJWTError = err => new AppError('Invalid Token! Login Again', 401);
+
 module.exports = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'Failed';
@@ -39,7 +41,9 @@ module.exports = (err, req, res, next) => {
     else if (process.env.NODE_ENV === 'production') {
         if (err.name === 'CastError') err = handleCastErrorDB(err);
         if (err.name === 'ValidationError') err = handleValidationErrorDB(err);
+        if (err.name === 'JsonWebTokenError') err = handleJWTError(err);
         if (err.code === 11000) err = handleDuplicateFieldsDB(err);
+
         sendErrorProd(err, res);
     }
 }

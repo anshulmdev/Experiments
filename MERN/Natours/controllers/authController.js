@@ -54,13 +54,10 @@ exports.protect = catchAsync( async(req, res, next) => {
     
     // Verifying Token
     const decodedToken = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
-    if (decodedToken) user = await User.findOne({ _id: decodedToken.id }).select('+password');
+    if (decodedToken) user = await User.findById(decodedToken.id).select('+password');
     else return next(new AppError(`Token is not Valid!`, 401));
 
-    //Verifying User
-    if (!user || !await user.correctPassword(password, user.password)){
-        return next(new AppError(`Incorrect email or password`, 401));
-    }
+
     
     next();
 })
