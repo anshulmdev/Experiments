@@ -42,8 +42,12 @@ exports.login = catchAsync( async (req, res, next) => {
     })
 })
 
-exports.protect = (req, res, next) => {
-    const { token } = req.headers;
-    console.log(token);
+exports.protect = catchAsync( async(req, res, next) => {
+    const { authorization } = req.headers;
+    let token;
+    // Getting Token
+    if (authorization && authorization.startsWith('Bearer')) token = authorization.split(' ')[1];
+    else return next(new AppError(`User not logged In`, 401));
+    
     next();
-}
+})
