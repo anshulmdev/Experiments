@@ -51,6 +51,10 @@ exports.protect = catchAsync( async(req, res, next) => {
     if (authorization && authorization.startsWith('Bearer')) token = authorization.split(' ')[1];
     else return next(new AppError(`User not logged In`, 401));
     // Verifying Token
+    const decodedToken = await promisify(jwt.verify)(token, process.env.JWT_SECRET)
+    if (decodedToken) user = await User.findOne({ _id: decodedToken.id }).select('+password');
+    else return next(new AppError(`Token is not Valid!`, 401));
+
     console.timeLog(user)
     
     next();
