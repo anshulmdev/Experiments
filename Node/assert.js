@@ -2,7 +2,6 @@
 const assert = require('assert/strict');
 
 
-// const assert = require('assert');
 const assert = require('assert/strict');
 
 // Example 1:
