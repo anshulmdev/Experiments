@@ -12,3 +12,4 @@
 - MongoDB
 - Firebase
 - Express
+- Redis
