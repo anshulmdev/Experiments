@@ -4,5 +4,8 @@
       "allowJs": true,
       "target": "es5"
     },
-    "include": ["./*"]
+    "include": ["./*"],
+    "typeRoots": [
+        "./node_modules/@types"
+    ]
   }
