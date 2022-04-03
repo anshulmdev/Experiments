@@ -3,6 +3,8 @@
     "compilerOptions": {
         "target": "esnext",
         "outDir": "build",
-        "noEmit": true
+        "noEmit": true,
+        "allowJs": true,
+        "checkJs": true
     }
 }
