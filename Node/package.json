@@ -13,6 +13,7 @@
     "bcrypt": "^5.0.1"
   },
   "devDependencies": {
-    "jest": "^27.5.1"
+    "jest": "^27.5.1",
+    "typescript": "^4.6.3"
   }
 }
