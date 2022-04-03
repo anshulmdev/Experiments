@@ -34,6 +34,7 @@ const handleValidationErrorDB = err => {
 
 const handleJWTError = err => new AppError('Invalid Token! Login Again', 401);
 
+const handleTokenExpiredError = err => new AppError('Expired Token! Login Again', 401);
 module.exports = (err, req, res, next) => {
     err.statusCode = err.statusCode || 500;
     err.status = err.status || 'Failed';
@@ -42,6 +43,7 @@ module.exports = (err, req, res, next) => {
         if (err.name === 'CastError') err = handleCastErrorDB(err);
         if (err.name === 'ValidationError') err = handleValidationErrorDB(err);
         if (err.name === 'JsonWebTokenError') err = handleJWTError(err);
+        if (err.name === 'TokenExpiredError') err = handleTokenExpiredError(err);
         if (err.code === 11000) err = handleDuplicateFieldsDB(err);
 
         sendErrorProd(err, res);
