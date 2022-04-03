@@ -1,9 +1,9 @@
 
-var localStorage = require('../../../Design Patterns/Adapter/localStorage');
+import localStorage from '../../../Design Patterns/Adapter/localStorage';
 
 console.log( "localStorage length: ", localStorage.length );
 
-var uid = localStorage.getItem("user_id");
+const uid = localStorage.getItem("user_id");
 
 console.log( "user_id: ", uid );
 

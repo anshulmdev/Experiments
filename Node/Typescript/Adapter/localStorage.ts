@@ -1,7 +1,9 @@
-const { readFileSync, writeFile, existsSync, unlink} = require('fs')
+import { readFileSync, writeFile, existsSync, unlink } from 'fs';
 
 
 class localStorage {
+  items: Object
+  
 
   constructor () {
     if(existsSync('localStorage.json')){
