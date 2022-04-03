@@ -46,17 +46,16 @@ exports.login = catchAsync( async (req, res, next) => {
 exports.protect = catchAsync( async(req, res, next) => {
     const { authorization } = req.headers;
     let token;
-    let user;
-    let password;
     // Getting Token
     if (authorization && authorization.startsWith('Bearer')) token = authorization.split(' ')[1];
     else return next(new AppError(`User not logged In`, 401));
     
     // Verifying Token
     const decodedToken = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-    if (decodedToken) user = await User.findById(decodedToken.id).select('+password');
-    else return next(new AppError(`User is not Valid!`, 401));
-    console.log(process.env.NODE_ENV)
+    const user = await User.findById(decodedToken.id).select('+password');
+
+    if (!user) return next(new AppError(`User no longer exist`, 401));
+
 
 
     
