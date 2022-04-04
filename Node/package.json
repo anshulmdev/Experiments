@@ -10,7 +10,8 @@
   "description": "",
   "dependencies": {
     "assert": "^2.0.0",
-    "bcrypt": "^5.0.1"
+    "bcrypt": "^5.0.1",
+    "faye": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
