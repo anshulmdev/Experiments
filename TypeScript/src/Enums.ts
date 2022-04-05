@@ -1,7 +1,7 @@
 enum Type {
-    "active" = "Active",
-    "inactive" = "Inactive",
-    "nan" = "Not Assigned"
+    "Active" = "active",
+    "Inactive" = "inactive",
+    "NaN" = "Not Assigned"
 }
 
 
@@ -20,5 +20,5 @@ let contactExample2: ContactInfo = {
     id: 11,
     name: "John",
     birthDate: new Date('11/11/1997'),
-    status: Type.active
+    status: Type.Active
 }
