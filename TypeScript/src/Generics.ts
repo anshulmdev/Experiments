@@ -15,3 +15,9 @@ interface Contact {
     name: String;
 }
 
+const myFunction = <T>(source: T): T => {
+    return {...source};
+}
+
+const a = {id: 55, Name: "John"};
+const b = myFunction(a);
