@@ -6,4 +6,11 @@ interface Contact {
 
 
 let sample: String = "Example";
-console.log(sample);
+
+
+let contactExample: Contact = {
+    id: 11,
+    name: "John",
+    birthDate: new Date('11/11/1997')
+
+}
