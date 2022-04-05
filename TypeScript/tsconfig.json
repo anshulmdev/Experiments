@@ -1,9 +1,9 @@
 {
-    "include": ["src/**/*"],
+    "include": ["src/*"],
     "compilerOptions": {
         "target": "esnext",
         "outDir": "build",
-        "noEmit": true,
+        "noEmit": false,
         "allowJs": true,
         "checkJs": true
     }
