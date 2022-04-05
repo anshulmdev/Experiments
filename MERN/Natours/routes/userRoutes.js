@@ -15,6 +15,6 @@ router
     .route('/:id')
     .get(getUser)
     .patch(updateUser)
-    .delete(protect, restrictTo('admin'), deleteUser);
+    .delete(protect, restrictTo('admin', 'lead-guide'), deleteUser);
 
 module.exports = router;

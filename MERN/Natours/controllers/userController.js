@@ -19,6 +19,8 @@ exports.updateUser = (req, res) => {
   res.status(500).json({"status":"Update Endpoint: Not Completed"})
 }
 
-exports.deleteUser = (req, res) => {
-  res.status(500).json({"status":"Delete Endpoint: Not Completed"})
-}
+exports.deleteUser = catchAsync(async (req, res) => {
+  const users = await User.findByIdAndDelete(req.params.id);
+  if (!users) return next(new AppError(`User with id: ${req.params.id} not found`, 404))
+  await res.status(204).json({"status": "success"})
+})
