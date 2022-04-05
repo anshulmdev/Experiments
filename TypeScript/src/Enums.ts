@@ -5,7 +5,7 @@ enum Type {
 }
 
 
-interface Contact {
+interface ContactInfo {
     id: Number;
     name: String;
     birthDate?: Date;
@@ -16,7 +16,7 @@ interface Contact {
 let sample2: String = "Example";
 
 
-let contactExample2: Contact = {
+let contactExample2: ContactInfo = {
     id: 11,
     name: "John",
     birthDate: new Date('11/11/1997'),
