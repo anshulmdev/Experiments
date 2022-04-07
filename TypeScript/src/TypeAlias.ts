@@ -1,8 +1,8 @@
-type ContactName = String;
+type ContactNameExample = String;
 
 
 interface Contact {
     id: Number;
-    name: ContactName;
+    name: ContactNameExample;
     birthDate?: Date;
 }
