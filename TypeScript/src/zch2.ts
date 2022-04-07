@@ -1,13 +1,12 @@
 interface Todo {
     id: Number;
     title: String;
-    status?: Status;
-    completedOn?: Date
+    status?: String;
+    completedOn?: Date;
 }
 
-enum Status 
 
-const todoItems = [
+const todoItems: Array<Todo> = [
     { id: 1, title: "Learn HTML", status: "done", completedOn: new Date("2021-09-11") },
     { id: 2, title: "Learn TypeScript", status: "in-progress" },
     { id: 3, title: "Write the best app in the world", status: "todo" },
