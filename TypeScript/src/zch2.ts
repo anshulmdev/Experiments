@@ -17,7 +17,7 @@ const todoItems: Array<Todo> = [
     { id: 3, title: "Write the best app in the world", status: Status.Todo },
 ]
 
-function addTodoItem(todo) {
+function addTodoItem(todo: String): Todo {
     const id = getNextId(todoItems)
 
     const newTodo = {
@@ -31,7 +31,7 @@ function addTodoItem(todo) {
     return newTodo
 }
 
-function getNextId(items) {
+function getNextId(items: Array<Todo>): Number {
     return items.reduce((max, x) => x.id > max ? max : x.id, 0) + 1
 }
 
