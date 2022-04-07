@@ -7,4 +7,8 @@ interface ContactExample2 {
 
 type contactKeys = keyof ContactExample2;
 
+// Example
 let sample3: contactKeys = "name";
+const genericExample1 = <T>(objectExample: T, propertyName: keyof T) => {
+    return objectExample[propertyName]
+}
