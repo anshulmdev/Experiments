@@ -13,3 +13,5 @@ const handleEvent = <T extends keyof ContactEvents>(
 ) => {
 
 }
+
+handleEvent("statusChanged", evt => evt)
