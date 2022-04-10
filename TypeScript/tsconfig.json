@@ -1,5 +1,5 @@
 {
-    "include": ["src/*", "Basic/Functions.ts", "Basic/Interface.ts", "Basic/Generics.ts", "Basic/Indexed.ts", "Basic/ObjectKeys.ts", "Basic/TypeAlias.ts", "Basic/UnionTypes.ts"],
+    "include": ["src/*", "Basic/Functions.ts", "Basic/Interface.ts", "Basic/Generics.ts", "Basic/Indexed.ts", "Basic/ObjectKeys.ts", "Basic/TypeAlias.ts", "Basic/UnionTypes.ts", "Basic/Util.ts"],
     "compilerOptions": {
         "target": "es6",
         "outDir": "build",
