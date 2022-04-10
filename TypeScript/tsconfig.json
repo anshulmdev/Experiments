@@ -1,5 +1,5 @@
 {
-    "include": ["src/*"],
+    "include": ["src/*", "Basic/Functions.ts"],
     "compilerOptions": {
         "target": "es6",
         "outDir": "build",
