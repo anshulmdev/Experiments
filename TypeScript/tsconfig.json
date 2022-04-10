@@ -1,12 +1,12 @@
 {
     "include": ["Basic/*"],
     "compilerOptions": {
+        "experimentalDecorators": true,
         "target": "es6",
         "outDir": "build",
         "noEmit": false,
         "allowJs": true,
         "checkJs": true,
-        "experimentalDecorators": true,
         "emitDecoratorMetadata": true
     }
 }
