@@ -1,4 +1,4 @@
-const { cloneArray } = require('../clonearray');
+const { cloneArray } = require('./clonearray');
 
 
 test('Array cloning test', () => {
