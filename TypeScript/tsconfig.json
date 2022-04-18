@@ -1,5 +1,5 @@
 {
-    "include": ["Basic/*"],
+    "include": ["Sample/*"],
     "compilerOptions": {
         "experimentalDecorators": true,
         "target": "es6",
