@@ -1,3 +1,5 @@
-export function sortArray(array) {
-    return array.sort();
+function sortArray(array) {
+    return array.sort((a, b) => a - b);
 }
+
+module.exports = sortArray;
