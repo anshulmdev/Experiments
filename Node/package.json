@@ -1,5 +1,9 @@
 {
+  "scripts": {
+    "eslint": "eslint"
+  },
   "devDependencies": {
+    "eslint": "^8.13.0",
     "mocha": "^9.2.2"
   }
 }
