@@ -1,24 +1,27 @@
 const chai = require('chai');
-const Reservation = require('../../../../lib/schema/reservation');
 const should = chai.should();
+const Reservation = require('../../../../lib/schema/reservation');
 
-describe('Reservation Schema', function () {
-	it('should return ISO 8601 date and time with valid input', function () {
-		const date = '2022/04/22';
-		const time = '05:06 AM';
+describe('Reservation Schema', function() {
+  context('Date and Time Combination', function() {
+    it('should return a ISO 8601 date and time with valid input', function() {
+      const date = '2017/06/10';
+      const time = '06:02 AM';
 
-		Reservation.combineDateTime(date, time)
-		.should.equal('2022-04-22T05:06:00.000Z');
-	});
+      Reservation.combineDateTime(date, time)
+        .should.equal('2017-06-10T06:02:00.000Z');
+    });
 
-	it('should be null on wrong date format', function () {
-		const date = "%@F$";
-		const time = "@!%#";
-		should.not.exist(Reservation.combineDateTime(date, time));
-	})
+    it('should return null on a bad date and time', function() {
+      const date = '!@#$';
+      const time = 'fail';
 
-	context('Validate', function() {
-    it('should pass a valid reservation with no optional fields', function() {
+      should.not.exist(Reservation.combineDateTime(date, time));
+    });
+  });
+
+  context('Validator', function() {
+    it('should pass a valid reservation with no optional fields', function(done) {
       const reservation = new Reservation({
         date: '2017/06/10',
         time: '06:02 AM',
@@ -26,13 +29,14 @@ describe('Reservation Schema', function () {
         name: 'Family',
         email: 'username@example.com'
       });
-			reservation.validator(function(error, value) {
-				value.should.deep.equal(reservation);
-				done(error)
-			})
+
+      reservation.validator(function(error, value) {
+        value.should.deep.equal(reservation);
+        done(error);
+      });
     });
 
-    it('should fail an invalid reservation with a bad email', function() {
+    it('should fail a reservation with a bad email', function(done) {
       const reservation = new Reservation({
         date: '2017/06/10',
         time: '06:02 AM',
@@ -41,9 +45,12 @@ describe('Reservation Schema', function () {
         email: 'username'
       });
 
-      return reservation.validator(reservation)
-        .catch(error => error.should.be.an('error').and.not.be.null);
+      reservation.validator(function(error) {
+        error.should
+          .be.an('error')
+          .and.not.be.null;
+        done();
+      });
     });
   });
-})
-
+});
