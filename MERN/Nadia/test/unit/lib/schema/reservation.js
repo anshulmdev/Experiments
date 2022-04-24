@@ -16,5 +16,34 @@ describe('Reservation Schema', function () {
 		const time = "@!%#";
 		should.not.exist(Reservation.combineDateTime(date, time));
 	})
+
+	context('Validate', function() {
+    it('should pass a valid reservation with no optional fields', function() {
+      const reservation = new Reservation({
+        date: '2017/06/10',
+        time: '06:02 AM',
+        party: 4,
+        name: 'Family',
+        email: 'username@example.com'
+      });
+			reservation.validator(function(error, value) {
+				value.should.deep.equal(reservation);
+				done(error)
+			})
+    });
+
+    it('should fail an invalid reservation with a bad email', function() {
+      const reservation = new Reservation({
+        date: '2017/06/10',
+        time: '06:02 AM',
+        party: 4,
+        name: 'Family',
+        email: 'username'
+      });
+
+      return reservation.validator(reservation)
+        .catch(error => error.should.be.an('error').and.not.be.null);
+    });
+  });
 })
 
