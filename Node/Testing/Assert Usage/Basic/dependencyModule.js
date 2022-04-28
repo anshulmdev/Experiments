@@ -6,3 +6,8 @@ function getSecretNumber() {
 function getDate () {
   return String(new Date());
 }
+
+module.exports = {
+  getSecretNumber,
+  getDate
+};
