@@ -5,12 +5,9 @@ function getTheSecret() {
   return `The secret was: ${dependencyModule.getSecretNumber()}`;
 }
 
-const sum = (a,b) => {
-  return a+b
-}
 
 const todo = async (id) => {
-  const req = await axios.get(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  const req = await axios.get(`https://jsonplaceholder.typicode.com/todos/${dependencyModule.sum(id, 1)}`);
   return req.data
 }
 
@@ -35,4 +32,4 @@ const setupNewUser = (info) => {
     callback(err);
   }
 }
-module.exports = { sum, todo, timeStamp, setupNewUser, getTheSecret}
+module.exports = { todo, timeStamp, setupNewUser, getTheSecret}
