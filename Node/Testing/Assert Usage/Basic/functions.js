@@ -23,6 +23,10 @@ const setupNewUser = (info) => {
     save: (user) => { return "Done"}
   }
 
+  var user = {
+    name: info.name,
+    nameLowercase: info.name.toLowerCase()
+  };
 
   try {
     return Database.save(user);
