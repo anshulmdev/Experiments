@@ -6,12 +6,19 @@ const dependencyModule = require("./dependencyModule");
 const axios = require('axios');
 
 describe("Basic GET Call", async function () {
+  let sumFunc;
+  beforeEach(() => {
+    sumFunc = sinon.stub(dependencyModule, "sum").returns(1)
+  })
 
+  afterEach(() => {
+    sumFunc.restore()
+  })
   context ("Todo Function", function () {
     it("It should Get User", async function () {
-      sinon.stub(axios, "get").resolves({ userId: 1, id: 1, title: 'delectus aut autem', completed: false })
+      sumFunc.returns(1);
       const result = { userId: 1, id: 1, title: 'delectus aut autem', completed: false }
-      const functionValue = await todo(1)
+      const functionValue = await todo(40);
       functionValue.should.deep.equal(result)
     })
   })
