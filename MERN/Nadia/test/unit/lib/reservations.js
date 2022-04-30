@@ -3,9 +3,21 @@ const should = chai.should();
 const proxyquire = require('proxyquire');
 const sinon = require('sinon');
 const Reservation = require('../../../lib/schema/reservation');
-const reservations = require('../../../lib/reservations');
+const db = require('sqlite');
+const { before, after } = require('lodash');
 
 describe('Reservations Library', function() {
+
+	const debugStub = function () {
+		return sinon.stub();
+	}
+	let reservations;
+	before(function () {
+		reservations = proxyquire('../../../lib/reservations', {
+			debug: debugStub
+		})
+	})
+
   context('Validate', function() {
     it('should pass a valid reservation with no optional fields', function() {
       const reservation = new Reservation({
@@ -33,4 +45,21 @@ describe('Reservations Library', function() {
         .catch(error => error.should.be.an('error').and.not.be.null);
     });
   });
+	context('Create', function() {
+		let dbStub;
+		before(function () {
+			dbStub = sinon ,stub(db, 'run').resolves({
+				stmt: {
+					lastID: 1349
+				}
+			})
+		});
+		after(function () {
+			dbStub.restore();
+		})
+		reservations = proxyquire('../../../lib/reservations', {
+			debug: debugStub,
+			sqlite: dbStub
+		});
+	});
 });
