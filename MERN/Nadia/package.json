@@ -12,7 +12,7 @@
     "debug": "cross-env DEBUG=nadia:* nodemon",
     "start": "node bin/www",
     "eslint": "eslint",
-		"coverage": "cross-env DEBUG=nadia:* nyc --report=html mocha"
+		"coverage": "cross-env DEBUG=nadia:* nyc --report=html mocha --recursive"
   },
   "dependencies": {
     "basic-auth": "^1.1.0",
