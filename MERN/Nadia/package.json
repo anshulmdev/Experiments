@@ -8,7 +8,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "test": "mocha --recursive",
+    "test": "cross-env DEBUG=nadia:* mocha --recursive",
     "debug": "cross-env DEBUG=nadia:* nodemon",
     "start": "node bin/www",
     "eslint": "eslint"

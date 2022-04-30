@@ -1,5 +1,7 @@
 const chai = require('chai');
 const should = chai.should();
+const proxyquire = require('proxyquire');
+const sinon = require('sinon');
 const Reservation = require('../../../lib/schema/reservation');
 const reservations = require('../../../lib/reservations');
 
