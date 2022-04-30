@@ -49,7 +49,6 @@ describe('Reservations Library', function() {
 
   context('Create', function() {
     let dbStub;
-    let validateSpy;
 
     before(function() {
       dbStub = sinon.stub(db, 'run').resolves({
@@ -85,34 +84,41 @@ describe('Reservations Library', function() {
         .catch(error => done(error));
     });
 
-    it('should call the validator with a transformed reservation once', function(done) {
-      const reservation = new Reservation({
-        date: '2017/06/10',
-        time: '06:02 AM',
-        party: 4,
-        name: 'Family',
-        email: 'username@example.com'
+
+  });
+
+  context('Save', function() {
+    let dbMock;
+
+    before(function() {
+      dbMock = sinon.mock(db);
+    });
+
+    after(function() {
+      dbMock.restore();
+    });
+
+    it('should only call the database once', function() {
+      dbMock.expects('run')
+        .once();
+
+      reservations = proxyquire('../../../lib/reservations', {
+        debug: debugStub,
+        sqlite: dbMock
       });
 
-      validateSpy = sinon.spy(reservations, 'validate');
+      const reservation = {
+        datetime: '2017-06-10T06:02:00.000Z',
+        party: 4,
+        name: 'Family',
+        email: 'username@example.com',
+        message: undefined,
+        phone: undefined
+      };
 
-      reservations.create(reservation)
-        .then(() => {
-          validateSpy.should
-            .have.been.calledOnce
-            .and.been.calledWith({
-              datetime: '2017-06-10T06:02:00.000Z',
-              party: 4,
-              name: 'Family',
-              email: 'username@example.com',
-              message: undefined,
-              phone: undefined
-            });
+      reservations.save(reservation);
 
-          validateSpy.restore();
-          done();
-        })
-        .catch(error => done(error));
+      dbMock.verify();
     });
   });
 });
