@@ -48,7 +48,7 @@ describe('Reservations Library', function() {
 	context('Create', function() {
 		let dbStub;
 		before(function () {
-			dbStub = sinon ,stub(db, 'run').resolves({
+			dbStub = sinon.stub(db, 'run').resolves({
 				stmt: {
 					lastID: 1349
 				}
@@ -61,5 +61,18 @@ describe('Reservations Library', function() {
 			debug: debugStub,
 			sqlite: dbStub
 		});
+		it('should return the created reservation ID', function (done) {
+			const reservation = new Reservation({
+        date: '2017/06/10',
+        time: '06:02 AM',
+        party: 4,
+        name: 'Family',
+        email: 'username@exmplae.com'
+				})
+				reservations.create(reservation).then(lastID => {
+					lastID.should.deep.equal(1349)
+					done();
+				}).catch(err => done(err));
+		})
 	});
 });
