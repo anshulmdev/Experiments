@@ -3,14 +3,6 @@ const should = chai.should();
 const Reservation = require('../../../../lib/schema/reservation');
 
 describe('Reservation Schema', function() {
-  context('Date and Time Combination', function() {
-    it('should return null on a bad date and time', function() {
-      const date = '!@#$';
-      const time = 'fail';
-
-      should.not.exist(Reservation.combineDateTime(date, time));
-    });
-  });
 
   context('Validator', function() {
     it('should pass a valid reservation with no optional fields', function(done) {
