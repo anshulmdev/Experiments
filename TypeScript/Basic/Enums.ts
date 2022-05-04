@@ -5,12 +5,6 @@ enum Type {
 }
 
 
-interface ContactInfo {
-    id: Number;
-    name: String;
-    birthDate?: Date;
-    status: Type
-}
 
 
 let sample2: String = "Example";
