@@ -4,6 +4,9 @@ const assert = require('assert/strict');
 
 const assert = require('assert/strict');
 
+// Example 1:
+const a = 9;
+const b = 10;
 
 try{ assert(a > b) } 
 catch(e) { console.log('Example 1: ', e.message) }
