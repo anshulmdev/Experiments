@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Greet } from './components/Greet'
+import { Greet, Reset } from './components/Greet'
 
 function App() {
   return (
@@ -10,15 +10,8 @@ function App() {
         <p>
           Basic React Application
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         <Greet name = "Anshul Mishra"/>
+        <Reset />
       </header>
     </div>
   )

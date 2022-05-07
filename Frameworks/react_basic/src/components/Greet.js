@@ -9,7 +9,7 @@ export const Greet = (props) => {
       );
 }
 
-export const reset = () => {
+export const Reset = () => {
   const [ message, setMessage ] = useState('Learning React 18')
   return (
     <div>
