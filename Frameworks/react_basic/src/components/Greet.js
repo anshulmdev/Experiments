@@ -9,12 +9,12 @@ export const Greet = (props) => {
       );
 }
 
-export const Reset = () => {
+export const Reset = (props) => {
   const [ message, setMessage ] = useState('Learning React 18')
   return (
     <div>
       <h6>{ message }</h6> 
-      <button onClick={ () => setMessage("Heading updated via useState")}>Reset Heading</button>
+      <button onClick={ () => setMessage(props.name)}>Reset Heading</button>
     </div>
   )
 }
