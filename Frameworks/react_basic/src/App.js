@@ -11,7 +11,7 @@ function App() {
           Basic React Application
         </p>
         <Greet name = "Anshul Mishra"/>
-        <Reset />
+        <Reset name = "Change state via prop"/>
       </header>
     </div>
   )
