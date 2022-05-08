@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Greet, Reset } from './components/Greet'
+import { Parent } from './components/Parent'
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <p>
           Basic React Application
         </p>
-        <Greet name = "Anshul Mishra"/>
+        <Parent />
         <Reset name = "Change state via prop"/>
       </header>
     </div>
