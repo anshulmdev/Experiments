@@ -8,6 +8,8 @@ const assert = require('assert/strict');
 const a = 9;
 const b = 10;
 
+try{ assert(a > b) }
+catch(e) { console.log('Example 1: ', e.message) }
 
 // Example 2:
 
