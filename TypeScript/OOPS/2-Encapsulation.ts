@@ -1,3 +1,5 @@
+// Private Methods
+
 class Power {
     private powerOf: number
     public value: number
