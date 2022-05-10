@@ -1,5 +1,5 @@
 {
-    "include": ["Sample/*"],
+    "include": ["OOPS/*"],
     "compilerOptions": {
         "experimentalDecorators": true,
         "target": "es6",
