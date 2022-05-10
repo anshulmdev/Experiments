@@ -19,7 +19,7 @@ const varB = [1 , 2];
 try{ assert.deepEqual(varA, varB) }
 catch(e) { console.log('Example 2: ', e.message) }
 try{ assert.deepEqual(varA, varB) }
-catch(e) { console.log('Example 2: ', e.message) }
+catch(e) { console.log('Example 3: ', e.message) }
 
 // Example 3:
 
