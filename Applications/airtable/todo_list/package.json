@@ -1,9 +1,4 @@
 {
-    "name": "@airtable/todo-app",
-    "version": "2.0.6",
-    "description": "A to-do list based on records in a table",
-    "author": "",
-    "license": "MIT",
     "scripts": {
         "ci": "cd ../../packages/sdk && yarn build && cd - && yarn test",
         "cypress": "cypress run",
