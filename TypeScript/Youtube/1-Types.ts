@@ -21,4 +21,10 @@ const ids: Record<number, string> = {
 ids[30] = "Thirty";
 console.log(ids)
 
+// Object Type
+
+const out = [1,2,3].map((v) => v**2);
+const out2 = [1,2,3].map((v) => `${v**2}`);
+//const out3: number[] = [1,2,3].map((v) =>`${v**2}`); // Throws Error
+
 
