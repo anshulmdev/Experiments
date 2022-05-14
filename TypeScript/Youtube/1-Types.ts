@@ -20,3 +20,5 @@ const ids: Record<number, string> = {
 }
 ids[30] = "Thirty";
 console.log(ids)
+
+
