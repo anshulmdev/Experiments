@@ -6,11 +6,17 @@
 
 const sampleBoolean: Boolean = true;
 const sampleRegex: RegExp = /\n/;
-const sampleArray: (string|Number)[] = [1,2,3,4,5, 'string'];
+const sampleArray: (string|number)[] = [1,2,3,4,5, 'string'];
 
-sampleArray.push('String2'); // -> Will Work
+sampleArray.push('string2'); // -> Will Work
 
-const sampleArray2: Number[] = [1, 2, 3, 4, 5]
-sampleArray2.push('aa') // -> Thows Error
+const sampleArray2: number[] = [1, 2, 3, 4, 5]
+// sampleArray2.push('aa') // -> Thows Error
 
-
+// Utility
+const ids: Record<number, string> = {
+    10: "Ten",
+    20: "Twenty"
+}
+ids[30] = "Thirty";
+console.log(ids)
