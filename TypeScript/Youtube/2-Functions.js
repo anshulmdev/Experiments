@@ -10,4 +10,5 @@ Scope
 */
 exports.__esModule = true;
 var _2_Functions_2_1 = require("./2-Functions-2");
+console.log((0, _2_Functions_2_1.addition)('9', 18));
 console.log((0, _2_Functions_2_1.addition)(9, 18));

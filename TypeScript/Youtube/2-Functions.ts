@@ -12,4 +12,5 @@ Scope
 import { addition } from './2-Functions-2';
 
 
+console.log(addition('9',18))
 console.log(addition(9,18))

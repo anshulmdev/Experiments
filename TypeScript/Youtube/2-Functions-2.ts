@@ -1,5 +1,5 @@
-export const addition = (num1: number, num2: number): number => {
-    return num1 + num2
+export const addition = (num1: (number|string), num2: number): number => {
+    return +num1 + num2
 }
 
 
