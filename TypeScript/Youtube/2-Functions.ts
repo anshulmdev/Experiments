@@ -9,8 +9,8 @@ Scope
 */
 
 
-import { addition } from './2-Functions-2';
+import { addition, promiseExample } from './2-Functions-2';
 
 
-console.log(addition('9',18))
-console.log(addition(9,18))
+console.log('Addition of Numbers', addition('9',18))
+console.log('Promise Example', promiseExample('www.google.in'))
