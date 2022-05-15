@@ -2,7 +2,7 @@
     "include": ["OOPS/*"],
     "compilerOptions": {
         "experimentalDecorators": true,
-        "target": "es6",
+        "target": "esnext",
         "outDir": "build",
         "noEmit": false,
         "allowJs": true,
