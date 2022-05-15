@@ -1,31 +1,19 @@
-// Kind of a Recursive tree pattern
-
-// Set of Directories
-// Set of Files
-
-/*
-
-var CatalogItem = require('./CatalogItem');
-var CatalogGroup = require('./CatalogGroup')
-
-var boots = new CatalogItem("Leather Boots", 79.99);
-var sneakers = new CatalogItem("Kicks", 39.99);
-var flipFlops = new CatalogItem("California work boots", 19.99);
+import Directories from './Directories';
+import Files from './Files';
 
 
-var group_shoes = new CatalogGroup("Shoes Inventory", [boots, sneakers, flipFlops]);
-var group_food = new CatalogGroup("Food Inventory", [
-  new CatalogItem("Apple", 29.99),
-  new CatalogItem("Kiwi", 229.99),
-  new CatalogItem("Banana", 49.99)
-]);
-var keyChain = new CatalogItem("Key Chain", 0.99);
+const file1 = new Files('Resume1.doc', 100);
+const file2 = new Files('Resume2.pdf', 200);
+const file3 = new Files('companyA.xls', 500);
+const directory1 = new Directories('Directory 1', [file1, file2, file3]);
 
-var completeCatalog = new CatalogGroup("Complete Inventory", [
-  keyChain, group_shoes, group_food
-])
+const file4 = new Files('Resume4.doc', 100);
+const file5 = new Files('Resume5.pdf', 300);
+const file6 = new Files('companyB.xls', 1000);
+const directory2 = new Directories('Directory 2', [file4, file5, file6]);
+
+const mainFile = new Files('companyC.ppt', 2000);
+const parentDirectory = new Directories('Complete Data', [mainFile, directory1, directory2])
 
 
-console.log(`Total is: $${completeCatalog.total}`)
-completeCatalog.print();
-*/
+console.log(parentDirectory.print())
