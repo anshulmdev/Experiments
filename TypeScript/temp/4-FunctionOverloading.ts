@@ -21,3 +21,8 @@ const parseCoordinateFromObject = (obj: Coordinate): Coordinate => {
 const parseCoordinateFromNumber = (x: number, y: number): Coordinate => {
     return {x, y}
 }
+
+const parseCoordinate = (var1: unknown, var2?: unknown): Coordinate => {
+    if (typeof var1 === 'object') return {x: 0, y: 0}
+    else return {x: 0, y: 0}
+}
