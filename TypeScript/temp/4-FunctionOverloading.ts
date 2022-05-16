@@ -9,3 +9,15 @@ Scopes
 6. As Keyword
 
 */
+
+interface Coordinate {
+    x: number
+    y: number
+}
+
+const parseCoordinateFromObject = (obj: Coordinate): Coordinate => {
+    return {...obj}
+}
+const parseCoordinateFromNumber = (x: number, y: number): Coordinate => {
+    return {x, y}
+}
