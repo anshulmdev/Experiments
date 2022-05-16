@@ -23,6 +23,11 @@ const parseCoordinateFromNumber = (x: number, y: number): Coordinate => {
 }
 
 const parseCoordinate = (var1: unknown, var2?: unknown): Coordinate => {
-    if (typeof var1 === 'object') return {x: 0, y: 0}
-    else return {x: 0, y: 0}
+    let coord = {x: 0, y: 0}
+    if (typeof var1 === 'object') coord =  {...(var1 as Coordinate)}
+    else coord = {x: (var1 as number), y: (var2 as number)}
+    return coord
 }
+
+console.log(parseCoordinate(10, 20))
+console.log(parseCoordinate({x: 10, y: 20}))
