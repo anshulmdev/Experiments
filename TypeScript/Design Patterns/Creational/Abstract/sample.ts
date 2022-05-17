@@ -64,3 +64,29 @@ class MacCheckbox implements Checkbox is
 // through abstract types: GUIFactory, Button and Checkbox. This
 // lets you pass any factory or product subclass to the client
 // code without breaking it.
+class Application is
+    private field factory: GUIFactory
+    private field button: Button
+    constructor Application(factory: GUIFactory) is
+        this.factory = factory
+    method createUI() is
+        this.button = factory.createButton()
+    method paint() is
+        button.paint()
+
+
+// The application picks the factory type depending on the
+// current configuration or environment settings and creates it
+// at runtime (usually at the initialization stage).
+class ApplicationConfigurator is
+    method main() is
+        config = readApplicationConfigFile()
+
+        if (config.OS == "Windows") then
+            factory = new WinFactory()
+        else if (config.OS == "Mac") then
+            factory = new MacFactory()
+        else
+            throw new Exception("Error! Unknown operating system.")
+
+        Application app = new Application(factory)
