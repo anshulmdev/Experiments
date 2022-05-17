@@ -32,3 +32,35 @@ class MacFactory implements GUIFactory is
 // Each distinct product of a product family should have a base
 // interface. All variants of the product must implement this
 // interface.
+interface Button is
+    method paint()
+
+// Concrete products are created by corresponding concrete
+// factories.
+class WinButton implements Button is
+    method paint() is
+        // Render a button in Windows style.
+
+class MacButton implements Button is
+    method paint() is
+        // Render a button in macOS style.
+
+// Here's the base interface of another product. All products
+// can interact with each other, but proper interaction is
+// possible only between products of the same concrete variant.
+interface Checkbox is
+    method paint()
+
+class WinCheckbox implements Checkbox is
+    method paint() is
+        // Render a checkbox in Windows style.
+
+class MacCheckbox implements Checkbox is
+    method paint() is
+        // Render a checkbox in macOS style.
+
+
+// The client code works with factories and products only
+// through abstract types: GUIFactory, Button and Checkbox. This
+// lets you pass any factory or product subclass to the client
+// code without breaking it.
