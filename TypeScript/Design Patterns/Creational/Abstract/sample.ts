@@ -20,3 +20,15 @@ class WinFactory implements GUIFactory is
         return new WinButton()
     method createCheckbox():Checkbox is
         return new WinCheckbox()
+
+// Each concrete factory has a corresponding product variant.
+class MacFactory implements GUIFactory is
+    method createButton():Button is
+        return new MacButton()
+    method createCheckbox():Checkbox is
+        return new MacCheckbox()
+
+
+// Each distinct product of a product family should have a base
+// interface. All variants of the product must implement this
+// interface.
