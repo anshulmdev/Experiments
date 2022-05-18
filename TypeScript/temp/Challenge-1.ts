@@ -1,1 +1,34 @@
-// https://www.youtube.com/watch?v=GsRnExrC89A&list=PLNqp92_EXZBJYFrpEzdO2EapvU0GOJ09n&index=5&ab_channel=JackHerrington
+
+const houses = [
+    { "name": "Atreides", "planets": "Calladan" },
+    { "name": "Corrino", "planets": ["Kaitan", "Salusa Secundus"] },
+    { "name": "Harkonnen", "planets": ["Giedi Prime", "Arrakis"] }
+  ]
+
+interface House {
+    name: string,
+    planets: string| string[]
+}
+
+interface HouseWithID {
+    id: number
+    name: string,
+    planets: string| string[]
+}
+
+function findHouses(houses: string): HouseWithID[];
+function findHouses(houses: string, filter: (house: House) => boolean): HouseWithID[];
+function findHouses(houses: House[]): HouseWithID[];
+function findHouses(houses: House[], filter: (house: House) => boolean): HouseWithID[];
+function findHouses(arg1: string | House[], filter?: (house: House) => boolean): HouseWithID[] {
+    let answer = []
+    const houses: House[] = typeof arg1 === 'string' ? JSON.parse(arg1) : arg1
+    return answer
+}
+
+
+console.log(
+    findHouses(JSON.stringify(houses), ({ name }) => name === "Atreides")
+);
+
+console.log(findHouses(houses, ({ name }) => name === "Harkonnen"));
