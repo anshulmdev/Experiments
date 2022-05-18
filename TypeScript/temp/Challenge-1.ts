@@ -21,14 +21,15 @@ function findHouses(houses: string, filter: (house: House) => boolean): HouseWit
 function findHouses(houses: House[]): HouseWithID[];
 function findHouses(houses: House[], filter: (house: House) => boolean): HouseWithID[];
 function findHouses(arg1: string | House[], filter?: (house: House) => boolean): HouseWithID[] {
-    let answer = []
-    const houses: House[] = typeof arg1 === 'string' ? JSON.parse(arg1) : arg1
-    return answer
+    const houses: House[] = typeof arg1 === 'string' ? JSON.parse(arg1) : arg1;
+
+    return ( filter ? houses.filter(filter) : houses ).map((house) => ({
+        id: houses.indexOf(house),
+        ...house
+    }))
 }
 
 
-console.log(
-    findHouses(JSON.stringify(houses), ({ name }) => name === "Atreides")
-);
+console.log(findHouses(JSON.stringify(houses), ({ name }) => name === "Atreides"));
 
 console.log(findHouses(houses, ({ name }) => name === "Harkonnen"));
