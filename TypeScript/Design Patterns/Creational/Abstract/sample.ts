@@ -53,15 +53,15 @@ class MacCheckbox implements Checkbox is
     method paint() is
         // Render a checkbox in macOS style.
 interface Checkbox is
-method paint()
+    method paint()
 
 class WinCheckbox implements Checkbox is
-method paint() is
-    // Render a checkbox in Windows style.
+    method paint() is
+        // Render a checkbox in Windows style.
 
 class MacCheckbox implements Checkbox is
-method paint() is
-    // Render a checkbox in macOS style.
+    method paint() is
+        // Render a checkbox in macOS style.
 
 
 // The client code works with factories and products only
