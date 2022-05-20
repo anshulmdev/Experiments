@@ -71,3 +71,29 @@ class CarBuilder implements Builder is
         this.reset()
         return product
 
+// Unlike other creational patterns, builder lets you construct
+// products that don't follow the common interface.
+class CarManualBuilder implements Builder is
+    private field manual:Manual
+
+    constructor CarManualBuilder() is
+        this.reset()
+
+    method reset() is
+        this.manual = new Manual()
+
+    method setSeats(...) is
+        // Document car seat features.
+
+    method setEngine(...) is
+        // Add engine instructions.
+
+    method setTripComputer(...) is
+        // Add trip computer instructions.
+
+    method setGPS(...) is
+        // Add GPS instructions.
+
+    method getProduct():Manual is
+        // Return the manual and reset the builder.
+
