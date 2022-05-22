@@ -17,3 +17,19 @@ console.log(multiply(9, 10)());
 
 
 // Reference Example
+
+
+const simpleString = (initial: string): [ () => string, (v: string) => void] => {
+    let str: string = initial;
+    return [
+        () => str,
+        (v: string) => {
+            str = v;
+        }
+    ]
+}
+
+const [myFunc1, myFunc2] = simpleString("My Initial String");
+console.log(myFunc1())
+myFunc2("Let's change the string now")
+console.log(myFunc1())
