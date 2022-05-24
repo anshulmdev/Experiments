@@ -1,6 +1,12 @@
-/*********************************
- * 1. GET BASIC IDEA OF GENERICS *
- * 2. START WITH TUPLES EXAMPLE  *
- * 3. UNKNOWN VS GENERICS        *
- * 4. NEED TO FOLLOW VIDEO       *
- *********************************/
+const simpleGenerics = <T>(initial: T): [ () => T, (v: T) => void] => {
+    let str: T = initial;
+    return [
+        () => str,
+        (v: T) => {
+            str = v;
+        }
+    ]
+}
+
+const [myGFunc1, myGFunc2] = simpleGenerics("My Initial String");
+const [myFFunc1, myFFunc2] = simpleGenerics(44);
