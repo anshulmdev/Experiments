@@ -20,3 +20,7 @@ var getEven = function (items, filterFunc) {
     return items.reduce(function (a, b) { return filterFunc(b) ? __spreadArray(__spreadArray([], a, true), [b], false) : a; }, []);
 };
 console.log(getEven(sample, function (v) { return v % 2 === 0 ? true : false; }));
+var powerOfTwo = function (items, power) {
+    return items.reduce(function (a, b) { return __spreadArray(__spreadArray([], a, true), [power(b)], false); }, []);
+};
+console.log(powerOfTwo(sample, function (v) { return Math.pow(v, 2); }));
