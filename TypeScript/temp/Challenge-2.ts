@@ -15,3 +15,10 @@ const getEven = <T>(items: T[], filterFunc: (v: T) => boolean): T[] => {
 }
 
 console.log(getEven(sample, (v) => v%2===0 ? true : false));
+
+const powerOfTwo = <T>(items: T[], power: (v: T) => number): T[] => {
+    return items.reduce(( a, b ) => [...a, power(b)], [])
+}
+
+
+console.log(powerOfTwo(sample, (v) => v**2));
