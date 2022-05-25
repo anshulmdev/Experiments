@@ -103,7 +103,31 @@ class CarManualBuilder implements Builder is
 // products according to a specific order or configuration.
 // Strictly speaking, the director class is optional, since the
 // client can control builders directly.
+class Director is
+    private field builder:Builder
 
+    // The director works with any builder instance that the
+    // client code passes to it. This way, the client code may
+    // alter the final type of the newly assembled product.
+    method setBuilder(builder:Builder)
+        this.builder = builder
+
+    // The director can construct several product variations
+    // using the same building steps.
+    method constructSportsCar(builder: Builder) is
+        builder.reset()
+        builder.setSeats(2)
+        builder.setEngine(new SportEngine())
+        builder.setTripComputer(true)
+        builder.setGPS(true)
+
+    method constructSUV(builder: Builder) is
+        // ...
+
+
+// The client code creates a builder object, passes it to the
+// director and then initiates the construction process. The end
+// result is retrieved from the builder object.
 class Application is
 
     method makeCar() is
