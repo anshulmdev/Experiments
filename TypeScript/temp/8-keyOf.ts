@@ -15,8 +15,9 @@ const officeSupplies = {
     }
 }
 
-const getStatus =<Supplies, Category extends keyof Supplies, Item extends keyof Category>(data: Supplies, name: Category, item: Item) => {
+const getStatus =<Supplies, Category extends keyof Supplies, Item extends keyof Supplies[Category]>(data: Supplies, name: Category, item: Item) => {
     console.log(name, item)
+    return data[name][item]
 }
 
-console.log()
+console.log(getStatus(officeSupplies, "Stationary Item", "Diary"))
