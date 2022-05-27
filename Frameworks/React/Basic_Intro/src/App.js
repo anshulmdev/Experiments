@@ -9,7 +9,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Basic React Application
+          Basic React Application - Testing mapped server
         </p>
         <Parent />
         <Reset name = "Change state via prop"/>
