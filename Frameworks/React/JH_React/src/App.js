@@ -7,14 +7,8 @@ function App() {
     <h6 className="App-header">
       Sample Heading
     </h6>
-    <div style={{
-      width: 800,
-      margin: "auto"
-    }}>
-      Heading 2 without styling
-    </div>
 
-    <table style>
+    <table style= {{ margin: "auto" }}>
       <thead>
         <tr>
         <th>Name</th>
