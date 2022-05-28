@@ -14,6 +14,21 @@ function App() {
       Heading 2 without styling
     </div>
 
+    <table style>
+      <thead>
+        <tr>
+        <th>Name</th>
+        <th>Age</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>John</td>
+        <td>35</td>
+      </tr></tbody>
+    </table>
+
+
     </div>
   );
 }
