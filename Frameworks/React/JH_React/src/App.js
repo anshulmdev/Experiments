@@ -29,7 +29,7 @@ function App() {
       </thead>
       <tbody>
         { pokemons.map((el) => (
-          <tr>
+          <tr key={el.id}>
             <td>{el.name.english}</td>
             <td>{el.type.join(",")}</td>
           </tr>
