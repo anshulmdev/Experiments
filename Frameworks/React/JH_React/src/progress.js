@@ -1,7 +1,4 @@
 /****
- * Table example
+ * Split dynamic in separaate component
  * 
- * Fetch pokemon REST api
- * Map and dynamic rows
- * Significance of unique Key
  ****/
