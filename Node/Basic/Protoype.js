@@ -1,4 +1,4 @@
-Base prototype.
+// Base prototype.
 abstract class Shape is
     field X: int
     field Y: int
@@ -50,3 +50,42 @@ class Circle extends Shape is
     method clone():Shape is
         return new Circle(this)
 
+
+// Somewhere in the client code.
+class Application is
+    field shapes: array of Shape
+
+    constructor Application() is
+        Circle circle = new Circle()
+        circle.X = 10
+        circle.Y = 10
+        circle.radius = 20
+        shapes.add(circle)
+
+        Circle anotherCircle = circle.clone()
+        shapes.add(anotherCircle)
+        // The `anotherCircle` variable contains an exact copy
+        // of the `circle` object.
+
+        Rectangle rectangle = new Rectangle()
+        rectangle.width = 10
+        rectangle.height = 20
+        shapes.add(rectangle)
+
+    method businessLogic() is
+        // Prototype rocks because it lets you produce a copy of
+        // an object without knowing anything about its type.
+        Array shapesCopy = new Array of Shapes.
+
+        // For instance, we don't know the exact elements in the
+        // shapes array. All we know is that they are all
+        // shapes. But thanks to polymorphism, when we call the
+        // `clone` method on a shape the program checks its real
+        // class and runs the appropriate clone method defined
+        // in that class. That's why we get proper clones
+        // instead of a set of simple Shape objects.
+        foreach (s in shapes) do
+            shapesCopy.add(s.clone())
+
+        // The `shapesCopy` array contains exact copies of the
+        // `shape` array's children.
