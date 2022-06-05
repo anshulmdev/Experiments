@@ -71,18 +71,6 @@ const routes = [
         path: "/admin/regex",
         component: Regex,
       },
-      {
-        path: "/admin/rest",
-        component: Rest,
-      },
-      {
-        path: "/admin/tables",
-        component: Tables,
-      },
-      {
-        path: "/admin/ticket",
-        component: Ticket,
-      },
     ],
   },
   {
