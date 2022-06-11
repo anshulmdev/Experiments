@@ -38,3 +38,15 @@ const makeCoordinates2 = (x: number, y: number, z:number): readonly [number, num
 }
 const example3 = makeCoordinates2(9,9,9);
 example3.x = 90
+
+
+// Example - 4
+
+const x = 10
+x = 90; // Error
+
+const y = [50, 90]
+y[0] = 100; // No Error
+
+const z = [50, 90] as const
+z[0] = 10 // Error
